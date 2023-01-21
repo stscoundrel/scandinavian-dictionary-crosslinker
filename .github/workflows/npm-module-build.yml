@@ -1,0 +1,27 @@
+name: NPM / TypeScript - Build
+
+on: [pull_request]
+
+defaults:
+  run:
+    working-directory: npm-module
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build with Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: yarn install --production=false
+    - run: yarn build
+      env:
+        CI: true
