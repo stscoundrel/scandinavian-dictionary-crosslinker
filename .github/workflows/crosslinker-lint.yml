@@ -2,7 +2,9 @@ name:  Crosslinker / Go - Lint
 
 on: [pull_request]
 
-working-directory: crosslinker
+defaults:
+  run:
+    working-directory: crosslinker
 
 jobs:
   build:

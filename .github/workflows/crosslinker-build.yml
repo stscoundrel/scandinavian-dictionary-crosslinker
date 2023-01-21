@@ -1,8 +1,10 @@
-name: Go - Build
+name: Crosslinker / Go - Build
 
 on: [pull_request]
 
-working-directory: crosslinker
+defaults:
+  run:
+    working-directory: crosslinker
 
 jobs:
   build:

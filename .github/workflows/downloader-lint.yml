@@ -1,0 +1,17 @@
+name: Downloader / Rust - Lint
+
+on: [pull_request]
+
+defaults:
+  run:
+    working-directory: downloader
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - run: cargo clippy -- -D warnings
