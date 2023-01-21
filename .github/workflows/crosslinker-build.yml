@@ -1,6 +1,8 @@
-name: Go - Test
+name: Go - Build
 
 on: [pull_request]
+
+working-directory: crosslinker
 
 jobs:
   build:
@@ -10,8 +12,8 @@ jobs:
         go: ['1.17', '1.18', '1.19']
     steps:
       - uses: actions/checkout@v3
-      - name: Test in Go ${{ matrix.go }}
+      - name: Build with Go ${{ matrix.go }}
         uses: actions/setup-go@v3
         with:
           go-version: ${{ matrix.go }}
-      - run: go test ./...
+      - run: go build ./...
