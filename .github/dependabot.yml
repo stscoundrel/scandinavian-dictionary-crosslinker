@@ -1,9 +1,16 @@
 version: 2
 updates:
   - package-ecosystem: gomod
-    directory: "/"
+    directory: "/crosslinker"
     schedule:
       interval: monthly
+    open-pull-requests-limit: 25
+
+
+  - package-ecosystem: cargo
+    directory: "/downloader"
+    schedule:
+      interval: weekly
     open-pull-requests-limit: 25
 
   - package-ecosystem: "github-actions"
