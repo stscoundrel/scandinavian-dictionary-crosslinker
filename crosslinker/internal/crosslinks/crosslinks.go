@@ -7,7 +7,7 @@ import (
 
 type Link struct {
 	Url    string `json:"url"`
-	Slug   string `json:"slug"`
+	Slug   string `json:"-"` // No JSON output.
 	Source string `json:"source"`
 }
 
@@ -45,7 +45,8 @@ func GetCrosslinks(sitemaps map[string][]string) map[string][]Link {
 
 	for _, links := range sitemapLinks {
 		for _, link := range links {
-			if !regexp.MustCompile(`\d`).MatchString(link.Slug) {
+			// Sanity: no numbers or very short slugs.
+			if !regexp.MustCompile(`\d`).MatchString(link.Slug) && len(link.Slug) > 2 {
 				crosslinks[link.Slug] = append(crosslinks[link.Slug], link)
 			}
 		}

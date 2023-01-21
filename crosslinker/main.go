@@ -1,7 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"strconv"
 
 	"github.com/stscoundrel/scandinavian-dictionary-crosslinker/internal/crosslinks"
 	"github.com/stscoundrel/scandinavian-dictionary-crosslinker/internal/sitemaps"
@@ -11,12 +14,8 @@ func main() {
 	sitemapData := sitemaps.GetSitemaps()
 	result := crosslinks.GetCrosslinks(sitemapData)
 
-	for slug, links := range result {
-		fmt.Println(slug)
-		for _, link := range links {
-			fmt.Println(link.Url)
-		}
-	}
+	file, _ := json.MarshalIndent(result, "", " ")
+	_ = ioutil.WriteFile("../resources/crosslinks.json", file, 0644)
 
-	fmt.Println(len(result))
+	fmt.Println("Outputted " + strconv.Itoa(len(result)) + " crosslinks!")
 }
