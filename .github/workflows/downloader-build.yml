@@ -2,7 +2,9 @@ name: Downloader / Rust - Build
 
 on: [pull_request]
 
-working-directory: downloader
+defaults:
+  run:
+    working-directory: downloader
 
 jobs:
   build:

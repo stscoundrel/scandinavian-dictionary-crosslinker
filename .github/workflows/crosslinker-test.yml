@@ -2,7 +2,9 @@ name: Crosslinker / Go - Test
 
 on: [pull_request]
 
-working-directory: crosslinker
+defaults:
+  run:
+    working-directory: crosslinker
 
 jobs:
   build:
