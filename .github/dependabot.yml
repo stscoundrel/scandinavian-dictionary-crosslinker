@@ -6,13 +6,18 @@ updates:
       interval: monthly
     open-pull-requests-limit: 25
 
-
   - package-ecosystem: cargo
     directory: "/downloader"
     schedule:
       interval: weekly
     open-pull-requests-limit: 25
-
+  
+  - package-ecosystem: npm
+    directory: "/npm-module"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 25
+  
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
