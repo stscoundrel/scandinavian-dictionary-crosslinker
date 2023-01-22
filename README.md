@@ -10,3 +10,7 @@ Parses sources from following dictionary projects:
 
 
 The parser finds over 1 000 entries that are present in all four dictionaries. There are also over 20 000 entries that appear in at least two different dictionaries, making them worth a crosslink.
+
+### Install
+
+`yarn add scandinavian-dictionary-crosslinker`
