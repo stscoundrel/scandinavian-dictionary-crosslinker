@@ -8,6 +8,8 @@ import (
 
 var BUILD_RESOURCE_PATH = "resources/crosslinks.json"
 var NPM_RESOURCE_PATH = "npm-module/resources/crosslinks.json"
+var README_PATH = "README.md"
+var NPM_README_PATH = "npm-module/README.md"
 
 func fileExists(filepath string) bool {
 	info, err := os.Stat(filepath)
@@ -33,20 +35,24 @@ func copyFile(source string, destination string) error {
 	return err
 }
 
-func main() {
-	if fileExists(NPM_RESOURCE_PATH) {
-		deleteError := deleteFile(NPM_RESOURCE_PATH)
+func updateResourceFile(source string, destination string) {
+	if fileExists(destination) {
+		deleteError := deleteFile(destination)
 		if deleteError != nil {
 			fmt.Println(deleteError)
 		}
 	}
 
-	// Replace with latest one from generated resources.
-	copyError := copyFile(BUILD_RESOURCE_PATH, NPM_RESOURCE_PATH)
+	copyError := copyFile(source, destination)
 
 	if copyError != nil {
 		fmt.Println(copyError)
 	} else {
-		fmt.Println("Updated crosslinks JSON resource to NPM module!")
+		fmt.Println("Updated " + destination + " resource!")
 	}
+}
+
+func main() {
+	updateResourceFile(BUILD_RESOURCE_PATH, NPM_RESOURCE_PATH)
+	updateResourceFile(README_PATH, NPM_README_PATH)
 }
