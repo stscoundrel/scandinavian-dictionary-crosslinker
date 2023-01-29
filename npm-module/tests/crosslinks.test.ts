@@ -1,4 +1,11 @@
-import { DictionarySource, getCrosslinks } from '../src';
+import {
+  DictionarySource,
+  getCrosslinks,
+  getOldIcelandicCrosslinks,
+  getOldINorwegianCrosslinks,
+  getOldNorseCrosslinks,
+  getOldSwedishCrosslinks,
+} from '../src';
 
 describe('Crosslinks tests', () => {
   test('Crosslinks contain correct amount of slug entries', () => {
@@ -85,5 +92,33 @@ describe('Crosslinks tests', () => {
         source: DictionarySource.OldSwedish,
       },
     ]);
+  });
+});
+
+describe('Crosslinks by language tests', () => {
+  test('Filters entries by given language, removing self-referencing links', () => {
+    // Abbadis is expected to appear in all languages.
+    const norwegianResult = getOldINorwegianCrosslinks('abbadis');
+    const norseResult = getOldNorseCrosslinks('abbadis');
+    const icelandicResult = getOldIcelandicCrosslinks('abbadis');
+    const swedishResult = getOldSwedishCrosslinks('abbadis');
+
+    // Each should've filtered away their own language.
+    expect(norwegianResult.length).toEqual(3);
+    expect(norseResult.length).toEqual(3);
+    expect(icelandicResult.length).toEqual(3);
+    expect(swedishResult.length).toEqual(3);
+
+    const sourcesToResults = {
+      'old-icelandic': icelandicResult,
+      'old-norse': norseResult,
+      'old-norwegian': norwegianResult,
+      'old-swedish': swedishResult,
+    };
+
+    // Results should not contain their own language
+    Object.keys(sourcesToResults).forEach((key) => {
+      expect(sourcesToResults[key].filter((link) => link.source === key).length).toEqual(0);
+    });
   });
 });
