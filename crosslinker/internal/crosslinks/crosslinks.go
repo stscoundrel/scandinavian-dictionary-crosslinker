@@ -39,6 +39,19 @@ func dropEmpties(crosslinks map[string][]Link) map[string][]Link {
 	return filtered
 }
 
+func appendManualLinks(crosslinks map[string][]Link, manualLinks map[string]string) map[string][]Link {
+	for firstSlug, secondSlug := range manualLinks {
+		link1 := crosslinks[firstSlug]
+		link2 := crosslinks[secondSlug]
+
+		// Crossinject as valid sources for each other.
+		crosslinks[firstSlug] = append(crosslinks[firstSlug], link2...)
+		crosslinks[secondSlug] = append(crosslinks[secondSlug], link1...)
+	}
+
+	return crosslinks
+}
+
 func GetCrosslinks(sitemaps map[string][]string) map[string][]Link {
 	crosslinks := map[string][]Link{}
 	sitemapLinks := parseLinks(sitemaps)
@@ -52,5 +65,7 @@ func GetCrosslinks(sitemaps map[string][]string) map[string][]Link {
 		}
 	}
 
-	return dropEmpties(crosslinks)
+	manualLinks := getManualAliases()
+
+	return dropEmpties(appendManualLinks(crosslinks, manualLinks))
 }
