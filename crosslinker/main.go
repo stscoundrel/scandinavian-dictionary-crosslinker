@@ -15,6 +15,7 @@ func main() {
 	result := crosslinks.GetCrosslinks(sitemapData)
 
 	file, _ := json.MarshalIndent(result, "", " ")
+	deleteIfExists("../resources/crosslinks.json")
 	_ = ioutil.WriteFile("../resources/crosslinks.json", file, 0644)
 
 	fmt.Println("Outputted " + strconv.Itoa(len(result)) + " crosslinks!")
