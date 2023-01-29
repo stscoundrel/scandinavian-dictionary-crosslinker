@@ -16,9 +16,9 @@ async fn main() {
     println!("Downloading sitemaps.");
 
     let requests = future::join_all(urls.into_iter().map(|(filename, url)| {
-        println!("Downloading {} sitemap", filename);
+        println!("Downloading {filename} sitemap");
         let client = &client;
-        let filename = format!("../resources/{}.xml", filename);
+        let filename = format!("../resources/{filename}.xml");
         async move {
             let resp = client.get(url).send().await.unwrap();
             let content = resp.bytes().await.unwrap();
@@ -29,7 +29,7 @@ async fn main() {
     .await;
 
     for (location, data) in requests {
-        println!("Saving {} to a file...", location);
+        println!("Saving {location} to a file...");
         fs::write(location, data).expect("Failed to save file!");
     }
 
