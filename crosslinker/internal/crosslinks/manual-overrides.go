@@ -8,6 +8,9 @@ func getManualAliases() map[string]string {
 		"amma":        "stormodhir",
 		"brodir":      "brodhir",
 		"daudr":       "dodher",
+		"drengskapr":  "drengs-kapr",
+		"drengiligr":  "drangeliker",
+		"drengr":      "dranger",
 		"drepa":       "drapa",
 		"dvergr":      "dvargher",
 		"ekki":        "angin-2",
@@ -30,5 +33,7 @@ func getManualAliases() map[string]string {
 		"stjopfadir":  "stiupfadhir",
 		"stjopmodir":  "stiupmodhir",
 		"tidindi":     "tidhing",
+		// Note: east norse first to avoid duplicate key.
+		"drangskaper": "drengskapr",
 	}
 }
