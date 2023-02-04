@@ -11,7 +11,7 @@ describe('Crosslinks tests', () => {
   test('Crosslinks contain correct amount of slug entries', () => {
     const result = getCrosslinks();
 
-    expect(Object.keys(result).length).toBe(27449);
+    expect(Object.keys(result).length).toBe(27468);
   });
 
   test('Crosslinks contain correct amount of summed individual links', () => {
@@ -22,7 +22,7 @@ describe('Crosslinks tests', () => {
       sum += result[key].length;
     });
 
-    expect(sum).toEqual(62643);
+    expect(sum).toEqual(62714);
   });
 
   test('Crosslink entries are returned in correct object format', () => {
@@ -84,12 +84,12 @@ describe('Crosslinks tests', () => {
 
     expect(result.ylan).toEqual([
       {
-        url: 'https://old-swedish-dictionary.vercel.app/word/ylan',
-        source: DictionarySource.OldSwedish,
-      },
-      {
         url: 'https://old-norwegian-dictionary.vercel.app/word/ylan',
         source: DictionarySource.OldNorwegian,
+      },
+      {
+        url: 'https://old-swedish-dictionary.vercel.app/word/ylan',
+        source: DictionarySource.OldSwedish,
       },
     ]);
   });
