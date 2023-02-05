@@ -3,6 +3,7 @@ package crosslinks
 import (
 	"path"
 	"regexp"
+	"strings"
 )
 
 type Link struct {
@@ -87,6 +88,14 @@ func GetCrosslinks(sitemaps map[string][]string) map[string][]Link {
 		for _, link := range links {
 			// Sanity: no numbers or very short slugs.
 			if !regexp.MustCompile(`\d`).MatchString(link.Slug) && len(link.Slug) > 2 {
+				// Should the slug contain dash, try to append dashless version too.
+				// It is likely to produce additional match later on.
+				// If not, it will anyway be dropped as "lone link" before return.
+				if strings.Contains(link.Slug, "-") {
+					dashless := strings.Replace(link.Slug, "-", "", -1)
+					crosslinks[dashless] = append(crosslinks[dashless], link)
+				}
+
 				crosslinks[link.Slug] = append(crosslinks[link.Slug], link)
 			}
 		}
