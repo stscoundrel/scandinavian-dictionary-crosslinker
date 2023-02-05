@@ -8,7 +8,7 @@ func getManualAliases() map[string]string {
 		"amma":        "stormodhir",
 		"brodir":      "brodhir",
 		"daudr":       "dodher",
-		"drengskapr":  "drengs-kapr",
+		"drengskapr":  "dreng-skapr",
 		"dreng-skapr": "drangskaper",
 		"drengiligr":  "drangeliker",
 		"drengr":      "dranger",

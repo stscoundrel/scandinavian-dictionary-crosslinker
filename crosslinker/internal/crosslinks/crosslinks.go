@@ -39,6 +39,33 @@ func dropEmpties(crosslinks map[string][]Link) map[string][]Link {
 	return filtered
 }
 
+func dropDoubles(crosslinks map[string][]Link) map[string][]Link {
+	filtered := map[string][]Link{}
+
+	// Manual crossappends may add doubles if more than two alternative slugs
+	// Just drop extras.
+	for slug, links := range crosslinks {
+		uniques := []Link{}
+
+		for _, link := range links {
+			exists := false
+			for _, unique := range uniques {
+				if link == unique {
+					exists = true
+				}
+			}
+
+			if !exists {
+				uniques = append(uniques, link)
+			}
+		}
+
+		filtered[slug] = uniques
+	}
+
+	return filtered
+}
+
 func appendManualLinks(crosslinks map[string][]Link, manualLinks map[string]string) map[string][]Link {
 	for firstSlug, secondSlug := range manualLinks {
 		link1 := crosslinks[firstSlug]
@@ -67,5 +94,5 @@ func GetCrosslinks(sitemaps map[string][]string) map[string][]Link {
 
 	manualLinks := getManualAliases()
 
-	return dropEmpties(appendManualLinks(crosslinks, manualLinks))
+	return dropEmpties(dropDoubles(appendManualLinks(crosslinks, manualLinks)))
 }
