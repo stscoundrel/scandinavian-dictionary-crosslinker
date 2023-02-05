@@ -1,6 +1,6 @@
 {
   "name": "scandinavian-dictionary-crosslinker",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Finds shared entries in dictionary sitemaps, allowing crosslinking",
   "repository": "https://github.com/stscoundrel/scandinavian-dictionary-crosslinker.git",
   "author": "stscoundrel <silvennoinen.sampo@gmail.com>",
