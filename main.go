@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-var BUILD_RESOURCE_PATH = "resources/crosslinks.json"
+var BUILD_RESOURCE_PATH = "resources/crosslinks.min.json"
 var NPM_RESOURCE_PATH = "npm-module/resources/crosslinks.json"
 var README_PATH = "README.md"
 var NPM_README_PATH = "npm-module/README.md"
