@@ -7,10 +7,10 @@ var jsonNode = parseFile("../resources/crosslinks.json")
 
 proc minify_link(link: string): string =
   return link
-    .replace("https://old-icelandic.vercel.app/word", "")
-    .replace("https://old-norwegian-dictionary.vercel.app/word", "")
-    .replace("https://old-swedish-dictionary.vercel.app/word", "")
-    .replace("https://cleasby-vigfusson-dictionary.vercel.app/word", "")
+    .replace("https://old-icelandic.vercel.app/word/", "")
+    .replace("https://old-norwegian-dictionary.vercel.app/word/", "")
+    .replace("https://old-swedish-dictionary.vercel.app/word/", "")
+    .replace("https://cleasby-vigfusson-dictionary.vercel.app/word/", "")
 
 
 proc minify_source(link: string): string =
