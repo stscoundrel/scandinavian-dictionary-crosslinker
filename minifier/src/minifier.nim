@@ -33,4 +33,6 @@ for slug, links in jsonNode:
 
 
 # Minify & save.
-writeFile("../resources/crosslinks.min.json", pretty(jsonNode))
+var minified = ""
+toUgly(minified, jsonNode)
+writeFile("../resources/crosslinks.min.json", minified)
