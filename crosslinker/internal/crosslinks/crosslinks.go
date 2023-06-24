@@ -83,6 +83,7 @@ func appendManualLinks(crosslinks map[string][]Link, manualLinks map[string]stri
 func GetCrosslinks(sitemaps map[string][]string) map[string][]Link {
 	crosslinks := map[string][]Link{}
 	sitemapLinks := parseLinks(sitemaps)
+	dashlessToDashfull := map[string]string{}
 
 	for _, links := range sitemapLinks {
 		for _, link := range links {
@@ -94,9 +95,20 @@ func GetCrosslinks(sitemaps map[string][]string) map[string][]Link {
 				if strings.Contains(link.Slug, "-") {
 					dashless := strings.Replace(link.Slug, "-", "", -1)
 					crosslinks[dashless] = append(crosslinks[dashless], link)
+
+					// Upkeep mapping of dashless to dashful
+					dashlessToDashfull[dashless] = link.Slug
+				} else {
+					// While slug did not contain dash, a dashful variant may exist.
+					dashfull, exists := dashlessToDashfull[link.Slug]
+
+					if exists {
+						crosslinks[dashfull] = append(crosslinks[link.Slug], link)
+					}
 				}
 
 				crosslinks[link.Slug] = append(crosslinks[link.Slug], link)
+
 			}
 		}
 	}
