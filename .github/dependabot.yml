@@ -5,21 +5,37 @@ updates:
     schedule:
       interval: monthly
     open-pull-requests-limit: 25
+    groups:
+       crosslinker-dependencies:
+          patterns:
+            - "*" # Match all dependencies to one PR.
 
   - package-ecosystem: cargo
     directory: "/downloader"
     schedule:
       interval: weekly
     open-pull-requests-limit: 25
+    groups:
+       downloader-dependencies:
+          patterns:
+            - "*" # Match all dependencies to one PR.
   
   - package-ecosystem: npm
     directory: "/npm-module"
     schedule:
       interval: monthly
     open-pull-requests-limit: 25
+    groups:
+       npm-dependencies:
+          patterns:
+            - "*" # Match all dependencies to one PR.
   
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: monthly
     open-pull-requests-limit: 25
+    groups:
+       ci-dependencies:
+          patterns:
+            - "*" # Match all dependencies to one PR.
