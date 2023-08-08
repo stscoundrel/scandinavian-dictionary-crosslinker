@@ -17,6 +17,7 @@ const appendBaseUrls = (links: Crosslink[]): Crosslink[] => links.map((link) => 
   source: link.source,
 }));
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function parseEntry(this: any, key: string, value: unknown): unknown {
   if (key === 'a') {
     this.url = value;
