@@ -3,7 +3,7 @@ import { Crosslink, DictionarySource } from './models';
 import { parse } from './parser';
 import { read } from './reader';
 
-const JSON_PATH = path.join(`${__dirname}/../resources/crosslinks.json`);
+const JSON_PATH = path.join(`${__dirname}/../resources/crosslinks.json.gz`);
 
 let cache: Record<string, Crosslink[]> | null = null;
 

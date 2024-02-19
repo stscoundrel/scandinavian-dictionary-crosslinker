@@ -1,8 +1,10 @@
 import std/json
 import std/enumerate
 import std/strutils
+import zippy
 
-var jsonNode = parseFile("../resources/crosslinks.json")
+var originalJsonContent = parseFile("../resources/crosslinks.json")
+var jsonContent = parseFile("../resources/crosslinks.json")
 
 
 proc minify_link(link: string): string =
@@ -21,18 +23,22 @@ proc minify_source(link: string): string =
     .replace("old-icelandic", "oi")
 
 
-for slug, links in jsonNode:
+for slug, links in jsonContent:
   # Minify content.
   for index, link in enumerate(links):
-    jsonNode[slug][index]["a"] = newJString(minify_link(link["url"].getStr()))
-    jsonNode[slug][index]["b"] = newJString(minify_source(link["source"].getStr()))
+    jsonContent[slug][index]["a"] = newJString(minify_link(link["url"].getStr()))
+    jsonContent[slug][index]["b"] = newJString(minify_source(link["source"].getStr()))
 
     # Drop old content keys.
-    jsonNode[slug][index].delete("url")
-    jsonNode[slug][index].delete("source")
+    jsonContent[slug][index].delete("url")
+    jsonContent[slug][index].delete("source")
 
 
 # Minify & save.
 var minified = ""
-toUgly(minified, jsonNode)
+toUgly(minified, jsonContent)
 writeFile("../resources/crosslinks.min.json", minified)
+
+# Also save gzipped variants.
+writeFile("../resources/crosslinks.json.gz", compress($originalJsonContent, BestSpeed, dfGzip))
+writeFile("../resources/crosslinks.min.json.gz", compress(minified, BestSpeed, dfGzip))
