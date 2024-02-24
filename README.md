@@ -25,3 +25,12 @@ Run `cargo run` in `downloader` folder. Downloads latest XML sitemaps to `resour
 ### Generate crosslinks
 
 Run `go run *.go` in `crosslinks` folder. Generates crosslinks json to `resources` folder.
+
+
+### Minify outout
+
+Run `nimble build` and `./minifier` in `minifier` folder. Generates minified & gzipped json outputs.
+
+### Update data to NPM module.
+
+Run `go run main.go` in root folder to update json & readme to NPM module.

@@ -11,7 +11,7 @@ describe('Crosslinks tests', () => {
   test('Crosslinks contain correct amount of slug entries', () => {
     const result = getCrosslinks();
 
-    expect(Object.keys(result).length).toBe(44545);
+    expect(Object.keys(result).length).toBe(48294);
   });
 
   test('Crosslinks contain correct amount of summed individual links', () => {
@@ -22,7 +22,7 @@ describe('Crosslinks tests', () => {
       sum += result[key].length;
     });
 
-    expect(sum).toEqual(120313);
+    expect(sum).toEqual(128440);
   });
 
   test('Crosslink entries are returned in correct object format', () => {
@@ -42,22 +42,18 @@ describe('Crosslinks tests', () => {
     expect(result.abyrgdarhlutr).toEqual(
       [
         {
-          url: 'https://old-norwegian-dictionary.vercel.app/word/abyrgdarhlutr',
-          source: DictionarySource.OldNorwegian,
-        },
-        {
           url: 'https://old-icelandic.vercel.app/word/abyrgdarhlutr',
           source: DictionarySource.OldIcelandic,
+        },
+        {
+          url: 'https://old-norwegian-dictionary.vercel.app/word/abyrgdarhlutr',
+          source: DictionarySource.OldNorwegian,
         },
       ],
     );
 
     expect(result.hneyking).toEqual(
       [
-        {
-          url: 'https://old-norwegian-dictionary.vercel.app/word/hneyking',
-          source: DictionarySource.OldNorwegian,
-        },
         {
           url: 'https://cleasby-vigfusson-dictionary.vercel.app/word/hneyking',
           source: DictionarySource.OldNorse,
@@ -66,18 +62,22 @@ describe('Crosslinks tests', () => {
           url: 'https://old-icelandic.vercel.app/word/hneyking',
           source: DictionarySource.OldIcelandic,
         },
+        {
+          url: 'https://old-norwegian-dictionary.vercel.app/word/hneyking',
+          source: DictionarySource.OldNorwegian,
+        },
       ],
     );
 
     expect(result.skurfir).toEqual(
       [
         {
-          url: 'https://old-norwegian-dictionary.vercel.app/word/skurfir',
-          source: DictionarySource.OldNorwegian,
-        },
-        {
           url: 'https://cleasby-vigfusson-dictionary.vercel.app/word/skurfir',
           source: DictionarySource.OldNorse,
+        },
+        {
+          url: 'https://old-norwegian-dictionary.vercel.app/word/skurfir',
+          source: DictionarySource.OldNorwegian,
         },
       ],
     );
@@ -95,10 +95,6 @@ describe('Crosslinks tests', () => {
 
     expect(result['otta-lauss']).toEqual([
       {
-        url: 'https://old-norwegian-dictionary.vercel.app/word/ottalauss',
-        source: DictionarySource.OldNorwegian,
-      },
-      {
         source: DictionarySource.OldNorse,
         url: 'https://cleasby-vigfusson-dictionary.vercel.app/word/otta-lauss',
       },
@@ -106,7 +102,10 @@ describe('Crosslinks tests', () => {
         source: DictionarySource.OldIcelandic,
         url: 'https://old-icelandic.vercel.app/word/ottalauss',
       },
-
+      {
+        url: 'https://old-norwegian-dictionary.vercel.app/word/ottalauss',
+        source: DictionarySource.OldNorwegian,
+      },
     ]);
   });
 });
