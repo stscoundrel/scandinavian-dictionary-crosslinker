@@ -7,6 +7,7 @@ var sitemapPaths = map[string]string{
 	"old-icelandic": "../resources/old-icelandic.xml",
 	"old-norwegian": "../resources/old-norwegian.xml",
 	"old-swedish":   "../resources/old-swedish.xml",
+	"old-danish":    "../resources/old-danish.xml",
 }
 
 func readXmlSitemaps() (map[string][]byte, error) {

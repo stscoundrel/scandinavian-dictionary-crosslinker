@@ -10,6 +10,7 @@ async fn main() {
     urls.insert("old-icelandic", "https://old-icelandic.vercel.app/sitemap.xml");
     urls.insert("old-norwegian", "https://old-norwegian-dictionary.vercel.app/sitemap.xml");
     urls.insert("old-swedish", "https://old-swedish-dictionary.vercel.app/sitemap.xml");
+    urls.insert("old-danish", "https://old-danish-dictionary.vercel.app/sitemap.xml");
 
     let client = Client::new();
 

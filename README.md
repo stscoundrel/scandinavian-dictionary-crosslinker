@@ -7,6 +7,7 @@ Parses sources from following dictionary projects:
 - [Old Icelandic Dictionary](https://old-icelandic.vercel.app/)
 - [Old Norwegian Dictionary](https://old-norwegian-dictionary.vercel.app/)
 - [Old Swedish Dictionary](https://old-swedish-dictionary.vercel.app/)
+- [Old Danish Dictionary](https://old-danish-dictionary.vercel.app/)
 
 
 The parser finds over 1 000 entries that are present in all four dictionaries. There are also over 20 000 entries that appear in at least two different dictionaries, making them worth a crosslink.
@@ -14,3 +15,22 @@ The parser finds over 1 000 entries that are present in all four dictionaries. T
 ### Install
 
 `yarn add scandinavian-dictionary-crosslinker`
+
+
+### Download sitemaps.
+
+Run `cargo run` in `downloader` folder. Downloads latest XML sitemaps to `resources` folder.
+
+
+### Generate crosslinks
+
+Run `go run *.go` in `crosslinks` folder. Generates crosslinks json to `resources` folder.
+
+
+### Minify outout
+
+Run `nimble build` and `./minifier` in `minifier` folder. Generates minified & gzipped json outputs.
+
+### Update data to NPM module.
+
+Run `go run main.go` in root folder to update json & readme to NPM module.

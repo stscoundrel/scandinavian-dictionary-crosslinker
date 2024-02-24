@@ -13,6 +13,7 @@ proc minify_link(link: string): string =
     .replace("https://old-norwegian-dictionary.vercel.app/word/", "")
     .replace("https://old-swedish-dictionary.vercel.app/word/", "")
     .replace("https://cleasby-vigfusson-dictionary.vercel.app/word/", "")
+    .replace("https://old-danish-dictionary.vercel.app/word/", "")
 
 
 proc minify_source(link: string): string =
@@ -21,6 +22,7 @@ proc minify_source(link: string): string =
     .replace("old-swedish", "os")
     .replace("old-norse", "on")
     .replace("old-icelandic", "oi")
+    .replace("old-danish", "od")
 
 
 for slug, links in jsonContent:

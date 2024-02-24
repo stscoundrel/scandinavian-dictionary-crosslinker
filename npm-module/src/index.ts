@@ -46,4 +46,9 @@ export const getOldSwedishCrosslinks = (slug: string): Crosslink[] => filterCros
   DictionarySource.OldSwedish,
 );
 
+export const getOldDanishCrosslinks = (slug: string): Crosslink[] => filterCrosslinksByLanguage(
+  slug,
+  DictionarySource.OldDanish,
+);
+
 export { Crosslink, DictionarySource } from './models';

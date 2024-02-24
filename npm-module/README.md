@@ -7,6 +7,7 @@ Parses sources from following dictionary projects:
 - [Old Icelandic Dictionary](https://old-icelandic.vercel.app/)
 - [Old Norwegian Dictionary](https://old-norwegian-dictionary.vercel.app/)
 - [Old Swedish Dictionary](https://old-swedish-dictionary.vercel.app/)
+- [Old Danish Dictionary](https://old-danish-dictionary.vercel.app/)
 
 
 The parser finds over 1 000 entries that are present in all four dictionaries. There are also over 20 000 entries that appear in at least two different dictionaries, making them worth a crosslink.
