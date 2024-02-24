@@ -20,3 +20,8 @@ The parser finds over 1 000 entries that are present in all four dictionaries. T
 ### Download sitemaps.
 
 Run `cargo run` in `downloader` folder. Downloads latest XML sitemaps to `resources` folder.
+
+
+### Generate crosslinks
+
+Run `go run *.go` in `crosslinks` folder. Generates crosslinks json to `resources` folder.
