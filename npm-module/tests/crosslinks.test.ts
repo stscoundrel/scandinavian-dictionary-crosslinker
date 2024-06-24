@@ -11,7 +11,7 @@ describe('Crosslinks tests', () => {
   test('Crosslinks contain correct amount of slug entries', () => {
     const result = getCrosslinks();
 
-    expect(Object.keys(result).length).toBe(48294);
+    expect(Object.keys(result).length).toBe(48307);
   });
 
   test('Crosslinks contain correct amount of summed individual links', () => {
@@ -22,7 +22,7 @@ describe('Crosslinks tests', () => {
       sum += result[key].length;
     });
 
-    expect(sum).toEqual(128440);
+    expect(sum).toEqual(128513);
   });
 
   test('Crosslink entries are returned in correct object format', () => {
