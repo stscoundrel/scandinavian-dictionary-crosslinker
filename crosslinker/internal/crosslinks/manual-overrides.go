@@ -21,6 +21,7 @@ func getManualAliases() map[string]string {
 		"fostrdottir": "fosterdottir",
 		"fostrfadir":  "fosterfadhir",
 		"fostrmodir":  "fostermodhir",
+		"fostrsystir": "fostersystir",
 		"geirlaukr":   "hvitloker",
 		"guddottir":   "gudhdottir",
 		"gudfadir":    "gudhfadhir",
@@ -34,7 +35,25 @@ func getManualAliases() map[string]string {
 		"stjopfadir":  "stiupfadhir",
 		"stjopmodir":  "stiupmodhir",
 		"tidindi":     "tidhing",
-		// Note: east norse first to avoid duplicate key.
-		"drangskaper": "drengskapr",
+		// Note: east norse (swedish) first to avoid duplicate key.
+		"brodhir":      "broder",
+		"dodher":       "dod",
+		"drapa":        "draebe",
+		"drangskaper":  "drengskapr",
+		"forfadhir":    "forfader",
+		"fostersystir": "fostersoster",
+		// Note: Danish variants differ largely from others,
+		// to avoid duplicates use them as keys.
+		"broder":       "brodir",
+		"dod":          "daudr",
+		"draebe":       "drepa",
+		"fader":        "fadir",
+		"faderfader":   "storfadhir",
+		"forfader":     "fodfadir",
+		"fostersoster": "fostrsystir",
+		"godfader":     "gudhfadhir",
+		"godmoder":     "gudhomodhir",
+		"fostermoder":  "fostrmodir",
+		"moderbroder":  "modurbrodir",
 	}
 }
