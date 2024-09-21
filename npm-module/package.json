@@ -34,7 +34,7 @@
   "scripts": {
     "lint": "bunx biome lint src tests",
     "fix": "bunx biome lint --write src tests",
-    "jest": "jest --verbose --runInBand --passWithNoTests",
+    "jest": "jest --verbose --passWithNoTests",
     "test:unit": "yarn jest",
     "test:coverage": "jest --coverage --coverageThreshold='{\"global\":{\"statements\":\"90\", \"functions\":\"90\", \"branches\":\"90\", \"lines\":\"90\"}}'",
     "build": "tsc",
