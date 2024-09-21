@@ -1,4 +1,5 @@
 import {
+  type Crosslink,
   DictionarySource,
   getCrosslinks,
   getOldIcelandicCrosslinks,
@@ -17,10 +18,10 @@ describe('Crosslinks tests', () => {
   test('Crosslinks contain correct amount of summed individual links', () => {
     const result = getCrosslinks();
     let sum = 0;
-
-    Object.keys(result).forEach((key) => {
-      sum += result[key].length;
-    });
+    
+    for (const [_, value] of Object.entries(result)) {
+      sum += value.length;
+    };
 
     expect(sum).toEqual(128513);
   });
@@ -28,12 +29,12 @@ describe('Crosslinks tests', () => {
   test('Crosslink entries are returned in correct object format', () => {
     const result = getCrosslinks();
 
-    Object.keys(result).forEach((key) => {
+    for (const key in Object.keys(result)) {
       // Only expected keys.
-      result[key].forEach((link) => {
+      for (const link in result[key]) {
         expect(Object.keys(link)).toEqual(['url', 'source']);
-      });
-    });
+      };
+    };
   });
 
   test('Crosslinks contain expected content', () => {
@@ -132,8 +133,8 @@ describe('Crosslinks by language tests', () => {
     };
 
     // Results should not contain their own language
-    Object.keys(sourcesToResults).forEach((key) => {
-      expect(sourcesToResults[key].filter((link) => link.source === key).length).toEqual(0);
-    });
+    for (const [key, value] of Object.entries(sourcesToResults)) {
+      expect(value.filter((link: Crosslink) => link.source === key).length).toEqual(0);
+    };
   });
 });

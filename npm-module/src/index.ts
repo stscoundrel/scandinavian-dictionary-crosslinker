@@ -1,5 +1,5 @@
-import path from 'path';
-import { Crosslink, DictionarySource } from './models';
+import path from 'node:path';
+import { type Crosslink, DictionarySource } from './models';
 import { parse } from './parser';
 import { read } from './reader';
 
