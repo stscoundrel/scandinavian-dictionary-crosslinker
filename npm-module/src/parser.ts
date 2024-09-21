@@ -1,6 +1,6 @@
-import zlib from 'zlib';
+import zlib from 'node:zlib';
 
-import { Crosslink } from './models';
+import type { Crosslink } from './models';
 
 export const parse = (content: Buffer): Record<string, Crosslink[]> => {
   // Decompress the gzipped data
