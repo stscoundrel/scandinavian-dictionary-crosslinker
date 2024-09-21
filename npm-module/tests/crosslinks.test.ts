@@ -1,3 +1,4 @@
+import test, { describe } from 'node:test';
 import {
   type Crosslink,
   DictionarySource,
@@ -7,12 +8,13 @@ import {
   getOldNorseCrosslinks,
   getOldSwedishCrosslinks,
 } from '../src';
+import assert from 'node:assert';
 
 describe('Crosslinks tests', () => {
   test('Crosslinks contain correct amount of slug entries', () => {
     const result = getCrosslinks();
 
-    expect(Object.keys(result).length).toBe(48307);
+    assert.equal(Object.keys(result).length, 48307);
   });
 
   test('Crosslinks contain correct amount of summed individual links', () => {
@@ -23,7 +25,7 @@ describe('Crosslinks tests', () => {
       sum += value.length;
     };
 
-    expect(sum).toEqual(128513);
+    assert.equal(sum, 128513);
   });
 
   test('Crosslink entries are returned in correct object format', () => {
@@ -32,7 +34,7 @@ describe('Crosslinks tests', () => {
     for (const key in Object.keys(result)) {
       // Only expected keys.
       for (const link in result[key]) {
-        expect(Object.keys(link)).toEqual(['url', 'source']);
+        assert.equal(Object.keys(link), ['url', 'source']);
       };
     };
   });
@@ -40,7 +42,7 @@ describe('Crosslinks tests', () => {
   test('Crosslinks contain expected content', () => {
     const result = getCrosslinks();
 
-    expect(result.abyrgdarhlutr).toEqual(
+    assert.deepEqual(result.abyrgdarhlutr,
       [
         {
           url: 'https://old-icelandic.vercel.app/word/abyrgdarhlutr',
@@ -53,7 +55,7 @@ describe('Crosslinks tests', () => {
       ],
     );
 
-    expect(result.hneyking).toEqual(
+    assert.deepEqual(result.hneyking,
       [
         {
           url: 'https://cleasby-vigfusson-dictionary.vercel.app/word/hneyking',
@@ -70,7 +72,7 @@ describe('Crosslinks tests', () => {
       ],
     );
 
-    expect(result.skurfir).toEqual(
+    assert.deepEqual(result.skurfir,
       [
         {
           url: 'https://cleasby-vigfusson-dictionary.vercel.app/word/skurfir',
@@ -83,7 +85,7 @@ describe('Crosslinks tests', () => {
       ],
     );
 
-    expect(result.ylan).toEqual([
+    assert.deepEqual(result.ylan, [
       {
         url: 'https://old-norwegian-dictionary.vercel.app/word/ylan',
         source: DictionarySource.OldNorwegian,
@@ -94,7 +96,7 @@ describe('Crosslinks tests', () => {
       },
     ]);
 
-    expect(result['otta-lauss']).toEqual([
+    assert.deepEqual(result['otta-lauss'], [
       {
         source: DictionarySource.OldNorse,
         url: 'https://cleasby-vigfusson-dictionary.vercel.app/word/otta-lauss',
@@ -120,10 +122,10 @@ describe('Crosslinks by language tests', () => {
     const swedishResult = getOldSwedishCrosslinks('abbadis');
 
     // Each should've filtered away their own language.
-    expect(norwegianResult.length).toEqual(3);
-    expect(norseResult.length).toEqual(3);
-    expect(icelandicResult.length).toEqual(3);
-    expect(swedishResult.length).toEqual(3);
+    assert.equal(norwegianResult.length, 3);
+    assert.equal(norseResult.length, 3);
+    assert.equal(icelandicResult.length, 3);
+    assert.equal(swedishResult.length, 3);
 
     const sourcesToResults = {
       'old-icelandic': icelandicResult,
@@ -134,7 +136,7 @@ describe('Crosslinks by language tests', () => {
 
     // Results should not contain their own language
     for (const [key, value] of Object.entries(sourcesToResults)) {
-      expect(value.filter((link: Crosslink) => link.source === key).length).toEqual(0);
+      assert.equal(value.filter((link: Crosslink) => link.source === key).length, 0);
     };
   });
 });
